@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityTableCell" rowHeight="80" id="zRt-gj-tJh" customClass="CityTableCell" customModule="City2City" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="412" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zRt-gj-tJh" id="GpW-eq-sgT">
+                <rect key="frame" x="0.0" y="0.0" width="412" height="79.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="K7O-sc-Ru1">
+                        <rect key="frame" x="20" y="15" width="382" height="49"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Atlanta, Georgia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GeF-nl-6Y0">
+                                <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Population: 2,332,232" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAp-7k-hRm">
+                                <rect key="frame" x="0.0" y="28.5" width="382" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="K7O-sc-Ru1" secondAttribute="trailing" constant="10" id="jik-zn-Fqf"/>
+                    <constraint firstItem="K7O-sc-Ru1" firstAttribute="top" secondItem="GpW-eq-sgT" secondAttribute="top" constant="15" id="lFS-xu-08x"/>
+                    <constraint firstItem="K7O-sc-Ru1" firstAttribute="leading" secondItem="GpW-eq-sgT" secondAttribute="leading" constant="20" id="tML-3Y-5Za"/>
+                </constraints>
+            </tableViewCellContentView>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="K7O-sc-Ru1" secondAttribute="bottom" constant="16" id="lr8-im-CIQ"/>
+            </constraints>
+            <connections>
+                <outlet property="cityMainLabel" destination="GeF-nl-6Y0" id="M7N-JT-UzJ"/>
+                <outlet property="citySubLabel" destination="ZAp-7k-hRm" id="ozK-ur-HKi"/>
+            </connections>
+            <point key="canvasLocation" x="307.19999999999999" y="299.55022488755623"/>
+        </tableViewCell>
+    </objects>
+</document>
