@@ -18,10 +18,19 @@ class ViewModel {
     
     private(set) var cities = [City]() {
         didSet {
-            delegate?.updateView()
+            orderedCities = order(with: cities)
         }
     } //get only property
     
+    private(set) var orderedCities = [String: [City]]() {
+        didSet {
+            delegate?.updateView()
+        }
+    }
+    
+    var filteredCities = [City]()
+    
+    var currentCity: City!
     
     func get() {
         
@@ -30,6 +39,39 @@ class ViewModel {
             self.cities = cities
             print("City Count: \(self.cities.count)")
         }
+    }
+    
+    
+    //MARK: Order Functionality
+    
+    private func order(with cities: [City]) -> [ String : [City] ] {
+        
+        //container
+        //        var dictionary = [String:[City]]()
+        //
+        //        for city in cities {
+        //
+        //            let first = city.name.prefix(1).uppercased()
+        //
+        //            if dictionary[first] == nil {
+        //                dictionary[first] = [city]
+        //            } else {
+        //                dictionary[first]?.append(city)
+        //            }
+        //        }
+        
+        //create a dictionary
+        var orderedCities = Dictionary(grouping: cities, by: {$0.name.prefix(1).uppercased()})
+        
+        //order these alphabetically
+        for (key, value) in orderedCities {
+            
+            orderedCities[key] = value.sorted(by: {$0.name < $1.name})
+            
+        }
+        
+        
+        return orderedCities
     }
     
     

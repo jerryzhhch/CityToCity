@@ -18,7 +18,10 @@ class CityTableCell: UITableViewCell {
     func configure(with city: City) {
         
         cityMainLabel.text = "\(city.name), \(city.state)"
-        citySubLabel.text = "Population: \(city.population)"
+        
+        let population = city.population.addCommas ?? "0"
+        
+        citySubLabel.text = "Population: \(population)"
         
     }
 }

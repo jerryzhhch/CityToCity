@@ -26,13 +26,54 @@ class SearchViewController: UIViewController {
         
     }
     
+    
+    
+    //MARK: Helper Functions
+    
+    func getCities(for section: Int) -> [City] {
+        
+        let keys = viewModel.orderedCities.keys.sorted(by: {$0 < $1})
+        
+        //access the key by section
+        let key = keys[section]
+        
+        //get correct cities based on key
+        return viewModel.orderedCities[key]!
+    
+    }
+    
+    func filterCities(by search: String) {
+        
+        //city container
+//        var cities = [City]()
+//        for city in viewModel.cities {
+//            if city.name.lowercased().contains(search.lowercased()) {
+//                cities.append(city)
+//            }
+//        }
+        
+        viewModel.filteredCities = viewModel.cities.filter({$0.name.lowercased().contains(search.lowercased()) || $0.state.lowercased().contains(search.lowercased())})
+        
+        searchTableView.reloadData()
+        
+    }
+    
+    func isFiltering() -> Bool {
+        
+        let isEmpty = searchController.searchBar.text!.isEmpty
+        
+        return !isEmpty && searchController.isActive
+        
+    }
+    
+    
     //MARK: Search Functionality
     func setupSearch() {
         
         searchController.definesPresentationContext = true
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Cities..."
-        searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
         
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -55,14 +96,26 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return isFiltering() ? 1 : viewModel.orderedCities.keys.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.cities.count
+        
+        let cities = getCities(for: section)
+        
+        return isFiltering() ? viewModel.filteredCities.count : cities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: CityTableCell.identifier, for: indexPath) as! CityTableCell
         
-        let city = viewModel.cities[indexPath.row]
+    
+        let cities = isFiltering() ? viewModel.filteredCities : getCities(for: indexPath.section)
+        
+        let city = cities[indexPath.row]
+        
         cell.configure(with: city)
         
         return cell
@@ -72,8 +125,34 @@ extension SearchViewController: UITableViewDataSource {
 
 extension SearchViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let cities = isFiltering() ? viewModel.filteredCities : getCities(for: indexPath.section)
+        let city = cities[indexPath.row]
+        viewModel.currentCity = city
+        
+        let mapVC = storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+        
+        mapVC.viewModel = viewModel
+        
+        self.navigationItem.searchController?.dismiss(animated: true, completion: nil)
+        self.navigationController?.pushViewController(mapVC, animated: true)
+        
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let keys = viewModel.orderedCities.keys.sorted(by: {$0 < $1})
+        return isFiltering() ? nil : keys[section]
+    }
+    
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        let keys = viewModel.orderedCities.keys.sorted(by: {$0 < $1})
+        return isFiltering() ? nil : keys
     }
     
 }
@@ -90,11 +169,16 @@ extension SearchViewController: ViewModelDelegate {
 
 //MARK: Search Bar Delgate
 
-extension SearchViewController: UISearchBarDelegate {
+extension SearchViewController: UISearchResultsUpdating {
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    
+    func updateSearchResults(for searchController: UISearchController) {
         
-        //TODO: Filter Data
-        print("Search Button Clicked")
+        guard let search = searchController.searchBar.text else {
+            return
+        }
+        
+        filterCities(by: search)
+        
     }
 }
