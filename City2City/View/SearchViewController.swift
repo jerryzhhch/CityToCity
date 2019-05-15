@@ -44,14 +44,6 @@ class SearchViewController: UIViewController {
     
     func filterCities(by search: String) {
         
-        //city container
-//        var cities = [City]()
-//        for city in viewModel.cities {
-//            if city.name.lowercased().contains(search.lowercased()) {
-//                cities.append(city)
-//            }
-//        }
-        
         viewModel.filteredCities = viewModel.cities.filter({$0.name.lowercased().contains(search.lowercased()) || $0.state.lowercased().contains(search.lowercased())})
         
         searchTableView.reloadData()
@@ -68,6 +60,7 @@ class SearchViewController: UIViewController {
     
     
     //MARK: Search Functionality
+    
     func setupSearch() {
         
         searchController.definesPresentationContext = true

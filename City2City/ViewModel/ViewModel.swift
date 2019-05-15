@@ -31,6 +31,9 @@ class ViewModel {
     var filteredCities = [City]()
     
     var currentCity: City!
+    var currentWeather: Weather!
+    
+    //MARK: Service
     
     func get() {
         
@@ -46,20 +49,6 @@ class ViewModel {
     
     private func order(with cities: [City]) -> [ String : [City] ] {
         
-        //container
-        //        var dictionary = [String:[City]]()
-        //
-        //        for city in cities {
-        //
-        //            let first = city.name.prefix(1).uppercased()
-        //
-        //            if dictionary[first] == nil {
-        //                dictionary[first] = [city]
-        //            } else {
-        //                dictionary[first]?.append(city)
-        //            }
-        //        }
-        
         //create a dictionary
         var orderedCities = Dictionary(grouping: cities, by: {$0.name.prefix(1).uppercased()})
         
@@ -69,7 +58,6 @@ class ViewModel {
             orderedCities[key] = value.sorted(by: {$0.name < $1.name})
             
         }
-        
         
         return orderedCities
     }

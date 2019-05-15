@@ -17,12 +17,39 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupMap()
         
-        //TODO: Get Weather
-        //TODO: Add Bar Button Item
+        setupMap()
+        getWeather()
+        createBarButtonItems()
+        
     }
     
+    
+    
+    //MARK: Weather
+    
+    @objc func getWeather() {
+        
+       weatherService.getWeather(from: viewModel.currentCity) { [unowned self] (wthr, err) in
+            
+            if let error = err {
+                
+                self.showAlert(
+                    title: "Could Not Access Weather: \(self.viewModel.currentCity.name), \(self.viewModel.currentCity.state)",
+                    message: error.localizedDescription)
+            }
+        
+            
+            if let weather = wthr {
+                
+                self.viewModel.currentWeather = weather
+                print("Weather: \(weather.weather.first!.description)")
+            }
+        }
+    }
+    
+    
+    //MARK: Setup
 
     private func setupMap() {
         
@@ -37,6 +64,14 @@ class MapViewController: UIViewController {
         
         mapView.addAnnotation(location)
         mapView.setRegion(region, animated: true)
+        
+    }
+    
+    
+    func createBarButtonItems() {
+        
+        let weatherButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(getWeather))
+        navigationItem.rightBarButtonItem = weatherButton
         
     }
     
