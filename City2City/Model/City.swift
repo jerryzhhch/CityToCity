@@ -42,6 +42,16 @@ class City {
 
     }
     
+    init(with core: CoreCity) {
+        
+        self.name = core.name!
+        self.coordinates = CLLocationCoordinate2D(latitude: core.latitude, longitude: core.longitude)
+        self.population = core.population!
+        self.state = core.state!
+        self.rank = core.rank!
+        
+    }
+    
     
     
 }

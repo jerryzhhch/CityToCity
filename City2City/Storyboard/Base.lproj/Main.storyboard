@@ -93,10 +93,10 @@
             </objects>
             <point key="canvasLocation" x="982" y="78"/>
         </scene>
-        <!--RecentsViewController-->
+        <!--RecentsNavigationController-->
         <scene sceneID="FJ5-h4-9ia">
             <objects>
-                <viewControllerPlaceholder storyboardName="Recent" referencedIdentifier="RecentsViewController" id="l1c-Sb-KJI" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Recent" referencedIdentifier="RecentsNavigationController" id="l1c-Sb-KJI" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="recents" id="t8i-jU-WLK"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k8G-Ch-Dgi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -109,6 +109,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Ha8-QA-LHR" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iWi-SQ-vUP">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

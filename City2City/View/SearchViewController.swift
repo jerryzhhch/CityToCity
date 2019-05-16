@@ -124,10 +124,13 @@ extension SearchViewController: UITableViewDelegate {
         let cities = isFiltering() ? viewModel.filteredCities : getCities(for: indexPath.section)
         let city = cities[indexPath.row]
         viewModel.currentCity = city
+        coreManager.save(with: city)
         
         let mapVC = storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
         
         mapVC.viewModel = viewModel
+        mapVC.hidesBottomBarWhenPushed = true
+        
         
         self.navigationItem.searchController?.dismiss(animated: true, completion: nil)
         self.navigationController?.pushViewController(mapVC, animated: true)

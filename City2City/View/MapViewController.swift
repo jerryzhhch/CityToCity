@@ -15,6 +15,7 @@ class MapViewController: UIViewController {
 
     var viewModel: ViewModel!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,11 +25,9 @@ class MapViewController: UIViewController {
         
     }
     
-    
-    
     //MARK: Weather
     
-    @objc func getWeather() {
+    func getWeather() {
         
        weatherService.getWeather(from: viewModel.currentCity) { [unowned self] (wthr, err) in
             
@@ -41,15 +40,14 @@ class MapViewController: UIViewController {
         
             
             if let weather = wthr {
-                
                 self.viewModel.currentWeather = weather
-                print("Weather: \(weather.weather.first!.description)")
+                print("\(self.viewModel.currentCity.name), \(self.viewModel.currentCity.state), Weather: \(weather.weather.first!.description)")
             }
         }
     }
     
     
-    //MARK: Setup
+    //MARK: Setup Map
 
     private func setupMap() {
         
@@ -68,9 +66,18 @@ class MapViewController: UIViewController {
     }
     
     
+    //MARK: Bar Button Items
+    
+    @objc func getWeatherInstance() {
+        let alert = AlertViewController.weatherInstance(with: viewModel)
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
     func createBarButtonItems() {
         
-        let weatherButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(getWeather))
+        let weatherButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(getWeatherInstance))
         navigationItem.rightBarButtonItem = weatherButton
         
     }

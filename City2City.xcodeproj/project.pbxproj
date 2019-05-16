@@ -15,6 +15,10 @@
 		040EAA2E228C613C00BBC84B /* Recent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 040EAA2D228C613C00BBC84B /* Recent.storyboard */; };
 		040EAA30228C627400BBC84B /* RecentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040EAA2F228C627400BBC84B /* RecentsViewController.swift */; };
 		040EAA32228C66DC00BBC84B /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040EAA31228C66DC00BBC84B /* AlertViewController.swift */; };
+		04768F80228DA2A000400243 /* CoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04768F7F228DA2A000400243 /* CoreManager.swift */; };
+		04768F82228DA33600400243 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04768F81228DA33600400243 /* Constants.swift */; };
+		04768F84228DB73300400243 /* CoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04768F83228DB73300400243 /* CoreViewModel.swift */; };
+		04768F86228DB7EB00400243 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04768F85228DB7EB00400243 /* Notification+Name.swift */; };
 		047834EE2289A8340086554F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047834ED2289A8340086554F /* AppDelegate.swift */; };
 		047834F02289A8340086554F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047834EF2289A8340086554F /* SearchViewController.swift */; };
 		047834F32289A8340086554F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047834F12289A8340086554F /* Main.storyboard */; };
@@ -51,6 +55,10 @@
 		040EAA2D228C613C00BBC84B /* Recent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Recent.storyboard; sourceTree = "<group>"; };
 		040EAA2F228C627400BBC84B /* RecentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsViewController.swift; sourceTree = "<group>"; };
 		040EAA31228C66DC00BBC84B /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		04768F7F228DA2A000400243 /* CoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreManager.swift; sourceTree = "<group>"; };
+		04768F81228DA33600400243 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		04768F83228DB73300400243 /* CoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreViewModel.swift; sourceTree = "<group>"; };
+		04768F85228DB7EB00400243 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		047834EA2289A8340086554F /* City2City.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = City2City.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		047834ED2289A8340086554F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		047834EF2289A8340086554F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -138,8 +146,9 @@
 			isa = PBXGroup;
 			children = (
 				047835162289AA4B0086554F /* City.swift */,
-				047834F42289A8340086554F /* City2City.xcdatamodeld */,
 				040EAA23228C4FBB00BBC84B /* Weather.swift */,
+				047834F42289A8340086554F /* City2City.xcdatamodeld */,
+				04768F81228DA33600400243 /* Constants.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -148,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				0478351F2289BBEB0086554F /* ViewModel.swift */,
+				04768F83228DB73300400243 /* CoreViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -182,6 +192,7 @@
 				047835192289B1570086554F /* CityService.swift */,
 				040EAA25228C543D00BBC84B /* WeatherService.swift */,
 				040EAA27228C548A00BBC84B /* WeatherAPI.swift */,
+				04768F7F228DA2A000400243 /* CoreManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -191,6 +202,7 @@
 			children = (
 				049B19FB228B04DD00651282 /* String+Extension.swift */,
 				040EAA29228C5F8E00BBC84B /* ViewController+Extension.swift */,
+				04768F85228DB7EB00400243 /* Notification+Name.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -300,6 +312,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04768F86228DB7EB00400243 /* Notification+Name.swift in Sources */,
+				04768F80228DA2A000400243 /* CoreManager.swift in Sources */,
+				04768F82228DA33600400243 /* Constants.swift in Sources */,
 				049B19FC228B04DD00651282 /* String+Extension.swift in Sources */,
 				0478351A2289B1570086554F /* CityService.swift in Sources */,
 				040EAA26228C543D00BBC84B /* WeatherService.swift in Sources */,
@@ -311,6 +326,7 @@
 				0478351C2289B8990086554F /* CityTableCell.swift in Sources */,
 				047835172289AA4B0086554F /* City.swift in Sources */,
 				040EAA28228C548A00BBC84B /* WeatherAPI.swift in Sources */,
+				04768F84228DB73300400243 /* CoreViewModel.swift in Sources */,
 				040EAA30228C627400BBC84B /* RecentsViewController.swift in Sources */,
 				047834EE2289A8340086554F /* AppDelegate.swift in Sources */,
 				040EAA32228C66DC00BBC84B /* AlertViewController.swift in Sources */,

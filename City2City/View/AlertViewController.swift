@@ -32,7 +32,14 @@ class AlertViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first!
+        
+        if touch.view == self.view {
+            dismiss(animated: true, completion: nil)
+        }
+        
+    }
     
     func setupWeather() {
         
@@ -40,7 +47,9 @@ class AlertViewController: UIViewController {
             return
         }
         
-        mainImage.layer.cornerRadius = 25
+        mainView.layer.cornerRadius = 25
+        mainView.clipsToBounds = false
+        
         cityLabel.text = "\(city.name), \(city.state)"
         weatherDescriptionLabel.text = weather.weather.first!.description
         tempLabel.text = "Temperature: \(weather.main.temperature)"

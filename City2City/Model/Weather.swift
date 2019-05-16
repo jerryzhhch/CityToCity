@@ -11,6 +11,7 @@ import Foundation
 
 class Weather: Decodable {
     
+    
     let weather: [WeatherInfo]
     let main: Main
     let wind: Wind
