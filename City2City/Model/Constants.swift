@@ -26,6 +26,7 @@ struct Constants {
         case population = "population"
         case rank = "rank"
         case state = "state"
+        case date = "date"
         
     }
     

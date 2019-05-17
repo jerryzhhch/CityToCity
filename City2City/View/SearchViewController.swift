@@ -23,7 +23,6 @@ class SearchViewController: UIViewController {
         setupSearch()
         setupView()
         viewModel.get()
-        
     }
     
     
@@ -67,6 +66,7 @@ class SearchViewController: UIViewController {
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Cities..."
         searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
         
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -81,6 +81,8 @@ class SearchViewController: UIViewController {
         searchTableView.tableFooterView = UIView(frame: .zero)
         
         viewModel.delegate = self
+        
+        definesPresentationContext = true
     }
 
 }
@@ -165,7 +167,7 @@ extension SearchViewController: ViewModelDelegate {
 
 //MARK: Search Bar Delgate
 
-extension SearchViewController: UISearchResultsUpdating {
+extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate {
     
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -175,6 +177,9 @@ extension SearchViewController: UISearchResultsUpdating {
         }
         
         filterCities(by: search)
-        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchController.dismiss(animated: true, completion: nil)
     }
 }

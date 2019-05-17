@@ -39,7 +39,7 @@ final class CoreManager {
     }()
     
     
-    //MARK: Helpers
+    //MARK: Load
     
     func getCoreCities() -> [CoreCity] {
         
@@ -62,6 +62,7 @@ final class CoreManager {
     }
     
     //MARK: Delete
+    
     func delete(with city: CoreCity) {
         
         context.delete(city)
@@ -77,6 +78,13 @@ final class CoreManager {
     
     func save(with city: City) {
         
+        guard !coreExists(city) else {
+            print("Already Saved To Core: \(city.name), \(city.state)")
+            return
+        }
+        
+        manageLimit()
+        
         //entity description
         let entity = NSEntityDescription.entity(forEntityName: Constants.Keys.CoreCity.rawValue, in: context)!
         
@@ -89,6 +97,9 @@ final class CoreManager {
         coreCity.setValue(city.coordinates.latitude, forKey: Constants.Core.latitude.rawValue)
         coreCity.setValue(city.coordinates.longitude, forKey: Constants.Core.longitude.rawValue)
         coreCity.setValue(city.rank, forKey: Constants.Core.rank.rawValue)
+        coreCity.setValue(Date().toString, forKey: Constants.Core.date.rawValue)
+        
+        print("Date: \(Date().toString)")
         
         //save context
         saveContext()
@@ -103,7 +114,46 @@ final class CoreManager {
         } catch {
             fatalError("Couldn't save the context")
         }
+    }
+    
+    //MARK: Helpers
+    
+    func coreExists(_ city: City) -> Bool {
         
+        //fetch request
+        let fetchRequest = NSFetchRequest<CoreCity>(entityName: Constants.Keys.CoreCity.rawValue)
+        
+        //fetch predicates
+        let namePredicate = NSPredicate(format: "name == %@", city.name)
+        let statePredicate = NSPredicate(format: "state == %@", city.state)
+        
+        //compound predicate
+        let fetchPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [namePredicate, statePredicate])
+        
+        //add predicate to fetchRequest
+        fetchRequest.predicate = fetchPredicate
+        
+        //container
+        var result = [CoreCity]()
+        
+        do {
+            result = try context.fetch(fetchRequest)
+        } catch {
+            print("Error: \(error.localizedDescription)")
+        }
+        
+        
+        return result.count > 0
+    }
+    
+    func manageLimit() {
+        
+        let totalCore = getCoreCities()
+        
+        if totalCore.count > 9 {
+            let sorted = totalCore.sorted(by: {$0.date! < $1.date!})
+            delete(with: sorted.last!)
+        }
     }
     
 }

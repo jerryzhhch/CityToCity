@@ -59,7 +59,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="YZQ-a2-G33" firstAttribute="bottom" secondItem="yRB-lc-eXS" secondAttribute="bottom" id="NaV-zy-UXM"/>
+                            <constraint firstAttribute="bottom" secondItem="yRB-lc-eXS" secondAttribute="bottom" id="NaV-zy-UXM"/>
                             <constraint firstItem="yRB-lc-eXS" firstAttribute="leading" secondItem="YZQ-a2-G33" secondAttribute="leading" id="YK2-9F-HfR"/>
                             <constraint firstItem="yRB-lc-eXS" firstAttribute="top" secondItem="YZQ-a2-G33" secondAttribute="top" id="cwX-Jl-SQd"/>
                             <constraint firstItem="YZQ-a2-G33" firstAttribute="trailing" secondItem="yRB-lc-eXS" secondAttribute="trailing" id="rdQ-gS-rPU"/>

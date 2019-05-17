@@ -34,6 +34,7 @@
 		047835202289BBEB0086554F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0478351F2289BBEB0086554F /* ViewModel.swift */; };
 		049B19FC228B04DD00651282 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049B19FB228B04DD00651282 /* String+Extension.swift */; };
 		049B19FE228B13B900651282 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049B19FD228B13B900651282 /* MapViewController.swift */; };
+		04FC67EB228EF03B00E0283D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FC67EA228EF03B00E0283D /* Date+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		0478351F2289BBEB0086554F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		049B19FB228B04DD00651282 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		049B19FD228B13B900651282 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		04FC67EA228EF03B00E0283D /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 				049B19FB228B04DD00651282 /* String+Extension.swift */,
 				040EAA29228C5F8E00BBC84B /* ViewController+Extension.swift */,
 				04768F85228DB7EB00400243 /* Notification+Name.swift */,
+				04FC67EA228EF03B00E0283D /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				04768F82228DA33600400243 /* Constants.swift in Sources */,
 				049B19FC228B04DD00651282 /* String+Extension.swift in Sources */,
 				0478351A2289B1570086554F /* CityService.swift in Sources */,
+				04FC67EB228EF03B00E0283D /* Date+Extension.swift in Sources */,
 				040EAA26228C543D00BBC84B /* WeatherService.swift in Sources */,
 				047834F02289A8340086554F /* SearchViewController.swift in Sources */,
 				047834F62289A8340086554F /* City2City.xcdatamodeld in Sources */,
